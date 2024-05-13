@@ -47,6 +47,7 @@
                     
                     <div class="d-grid gap-2">
                         <button type="submit" name="btn_submit" class="btn btn-dark">Submit</button>
+                        <p class=text-center mt-2>Aaaaa</p>
                     </div>
                     
                 </form>
