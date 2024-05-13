@@ -1,17 +1,26 @@
 <?php
 class Tuition {
+
+    # Define properties
     public $studentName;
     public $yearLevel;
     public $totalUnits;
     public $chooseLab;
     public $totalPrice; 
 
-    public function setValues($studentName, $yearLevel, $totalUnits, $chooseLab, $totalPrice) {
+    // public function __construct($studentName, $yearLevel, $totalUnits, $chooseLab, $totalPrice) {
+    //     $this->studentName = $studentName;
+    //     $this->yearLevel = $yearLevel;
+    //     $this->totalUnits = $totalUnits;
+    //     $this->chooseLab = $chooseLab;
+    //     $this->totalPrice = $totalPrice;
+    // }
+
+    public function setValues($studentName, $yearLevel, $totalUnits, $chooseLab) {
         $this->studentName = $studentName;
         $this->yearLevel = $yearLevel;
         $this->totalUnits = $totalUnits;
         $this->chooseLab = $chooseLab;
-        $this->totalPrice = $totalPrice;
     }
 
     public function calculateTuition() {
@@ -44,17 +53,16 @@ class Tuition {
         }
     }
 
+    public function getLabOptions(){
+        return $this->chooseLab;
+    }
+
     public function displayTuition() {
         echo "Student Name: " . $this->studentName . "<br>";
         echo "Year Level: " . $this->yearLevel . "<br>";
-        echo "No. of units: " . $this->totalUnits . "<br>";
-        echo "Total Price: " . $this->totalPrice . "<br>";
+        echo "No. of units: " . $this->totalUnits . " Units " . "<br>";
+        echo "Lab Option: " . $this->getLabOptions(). "<br>";
+        echo "Total Price: " . number_format($this->totalPrice, 2) . "<br>";
     }
 }
-
-$student = new Tuition();
-$student->setValues($studentName, $yearLevel, $totalUnits, $chooseLab, $totalPrice);
-
-$student->calculateTuition();
-
 ?>

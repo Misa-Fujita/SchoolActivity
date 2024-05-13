@@ -36,40 +36,53 @@
                     
                     <div class="container mt-2 mb-3 text-center">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="chooseLab" id="inlineRadio1" value="1" required>
+                            <input class="form-check-input" type="radio" name="chooseLab" id="inlineRadio1" value="With Laboratory" required>
                             <label class="form-check-label" for="inlineRadio1">With Lab</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="chooseLab" id="inlineRadio2" value="0" required>
+                            <input class="form-check-input" type="radio" name="chooseLab" id="inlineRadio2" value="Without-Lab" required>
                             <label class="form-check-label" for="inlineRadio2">Without Lab</label>
                         </div>
                     </div>
                     
                     <div class="d-grid gap-2">
                         <button type="submit" name="btn_submit" class="btn btn-dark">Submit</button>
-                        <p class=text-center mt-2>Aaaaa</p>
+                        <p class="text-center small">Copyright @2024</p>
+                        <p class="text-center small">This is a sample changes</p>
                     </div>
                     
                 </form>
                 
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn_submit"])) {
+
                     include "school.php";
 
-                    $studentName = $_POST["studentName"];
-                    $yearLevel = $_POST["yearLevel"];
-                    $totalUnits = $_POST["totalUnits"];
-                    $chooseLab = $_POST["chooseLab"];
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn_submit"])) {
+                        
+                        $studentName = $_POST["studentName"];
+                        $yearLevel = $_POST["yearLevel"];
+                        $totalUnits = $_POST["totalUnits"];
+                        $chooseLab = $_POST["chooseLab"];
 
-                    $student = new Tuition();
-                    $student->setValues($studentName, $yearLevel, $totalUnits, $chooseLab, 0);
+                        $student = new Tuition();
 
-                    $totalPrice = $student->calculateTuition();
+                        # Call the setValues()
+                        $student->setValues($studentName, $yearLevel, $totalUnits, $chooseLab);
 
-                    echo "Student Name: " . htmlspecialchars($student->studentName) . "<br>";
-                    echo "Year Level: " . htmlspecialchars($student->yearLevel) . "<br>";
-                    echo "Total Units: " . htmlspecialchars($student->totalUnits) . "<br>";
-                    echo "Total Price: " . htmlspecialchars($totalPrice) . "<br><br>";
+                        # Call the calculateTuition() method
+                        $totalPrice = $student->calculateTuition();
+                ?>
+
+                        <!-- # Display the output -->
+                        <div class='border padding-4 mt-2 rounded bg-dark text-white'>
+                                <?php $student->displayTuition(); ?>
+                        </div>
+                        
+                <?php            
+                        // echo "Student Name: " . htmlspecialchars($student->studentName) . "<br>";
+                        // echo "Year Level: " . htmlspecialchars($student->yearLevel) . "<br>";
+                        // echo "Total Units: " . htmlspecialchars($student->totalUnits) . "<br>";
+                        // echo "Total Price: " . htmlspecialchars($totalPrice) . "<br><br>";
                 }
                 ?>
             </div>            
