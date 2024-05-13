@@ -1,0 +1,19 @@
+John Smith -- > student name
+year level -- > 1
+no of units -- > 18
+price per unit (for year level 1) -- > 550
+laboratory price = 3,359
+
+Calculation:
+
+Multiply the following:
+    18 units
+* 550 price per unit
+---------------------------
+ 9,990 (without laboratory)
+
+    9,900 sub total
++   3,350 (laboratory fee)
+-------------------
+Final total: 13,529
+
